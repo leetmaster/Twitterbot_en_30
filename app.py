@@ -3,7 +3,14 @@ from access import *
 from random import randint
 
 # Setup API:
-# TODO
+def twitter_setup():
+    # Authenticate and access using keys:
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+
+    # Return API access:
+    api = tweepy.API(auth)
+    return api
 
 # Function to extract status (will return status for post):
 def extract_status(path=None):
