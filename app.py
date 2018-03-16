@@ -15,7 +15,6 @@ def twitter_setup():
 # Function to extract status (will return status for post):
 def extract_status(path=None):
     # No path => return "No book opened!"
-    # TODO
     if not path:
         return "No book opened!"
 
@@ -33,7 +32,7 @@ def extract_status(path=None):
 
 # Function to search a sentence in book:
 def search_sentence(text):
-    # Initialize status:
+    # Initialize status:
     status = 200
 
     # While we have a long or very short status:
@@ -52,17 +51,16 @@ def search_sentence(text):
     return sentence
 
 
-
 if __name__ == '__main__':
     # Setup Twitter API:
-    # TODO
+    bot = twitter_setup()
 
     # Set waiting time:
     segs = 120
 
     # Eternal posting:
     while True:
-       # Extract status:
+        # Extract status:
         status = extract_status("texto.txt")
         print(status)
 
@@ -72,5 +70,6 @@ if __name__ == '__main__':
             print("Successfully posted.")
         except tweepy.TweepError as e:
             print(e.reason)
+
         # Wait till next sentence extraction:
         time.sleep(segs)
