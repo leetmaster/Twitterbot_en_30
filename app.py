@@ -18,7 +18,7 @@ def extract_status(path=None):
     if not path:
         return "No book opened!"
 
-    # Try to search a sentence in book:
+# Try to search a sentence in book:
     try:
         # Open and read textbook:
         with open(path, 'r', encoding='ascii', errors='surrogateescape') as book:
