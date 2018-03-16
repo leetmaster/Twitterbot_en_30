@@ -16,33 +16,41 @@ def twitter_setup():
 def extract_status(path=None):
     # No path => return "No book opened!"
     # TODO
+    if not path:
+        return "No book opened!"
 
     # Try to search a sentence in book:
     try:
         # Open and read textbook:
-        # TODO
-
+        with open(path, 'r', encoding='ascii', errors='surrogateescape') as book:
+            text = book.read()
         # If successfuly read, search sentence:
-        # TODO
+        if text:
+            return search_sentence(text)
     except:
         # Book not found:
-        # TODO
+        return "Book not found!"
 
 # Function to search a sentence in book:
 def search_sentence(text):
     # Initialize status:
-    # TODO
+    status = 200
 
     # While we have a long or very short status:
     while not (5 < status < 125):
         # Generate a random number:
-        # TODO
+        index = randint(0,len(text))
+        # print(status)
 
         # Set indices of sentence:
-        # TODO
+        init_index = text[index:].find('.') + index + 2
+        last_index = text[init_index:].find('.') + init_index + 2
+        status = len(text[init_index:last_index])
 
     # Replace breaks w/spaces:
-    # TODO
+    sentence = re.sub("\n", " ", text[init_index:last_index])
+    return sentence
+
 
 
 if __name__ == '__main__':
@@ -50,15 +58,19 @@ if __name__ == '__main__':
     # TODO
 
     # Set waiting time:
-    segs = 3
+    segs = 120
 
     # Eternal posting:
     while True:
-        # Extract status:
-        # TODO
+       # Extract status:
+        status = extract_status("texto.txt")
+        print(status)
 
         # Try to post status:
-        # TODO
-
+        try:
+            bot.update_status(status)
+            print("Successfully posted.")
+        except tweepy.TweepError as e:
+            print(e.reason)
         # Wait till next sentence extraction:
         time.sleep(segs)
