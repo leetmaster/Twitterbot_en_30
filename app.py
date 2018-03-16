@@ -56,7 +56,7 @@ if __name__ == '__main__':
     bot = twitter_setup()
 
     # Set waiting time:
-    segs = 7200
+    segs = 3600
 
     # Eternal posting:
     while True:
