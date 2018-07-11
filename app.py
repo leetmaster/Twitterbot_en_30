@@ -61,7 +61,7 @@ if __name__ == '__main__':
     # Eternal posting:
     while True:
         # Extract status:
-        status = extract_status("hacker.txt")
+        status = extract_status("cyberia1.txt")
         print(status)
 
         # Try to post status:
