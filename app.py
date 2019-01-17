@@ -1,4 +1,6 @@
-import tweepy, re, time
+import tweepy
+import re
+import time
 from access import *
 from random import randint
 
